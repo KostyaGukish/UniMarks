@@ -1,7 +1,7 @@
 package org.example.entity;
 
 public class pteacher {
-    pteacher(){
+    public pteacher(){
     }
     int id;
 
