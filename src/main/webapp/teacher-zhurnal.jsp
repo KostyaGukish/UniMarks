@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="zhurnal.css">
+    <link rel="stylesheet" href="styles/zhurnal.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Журнал</title>
     <style>
         html {
-            background-image: url("fon1.png");
+            background-image: url("images/fon1.png");
             background-size: cover;
             background-position: center;
             min-height: 100%;
@@ -104,15 +104,15 @@
 </head>
 <body>
 <div class="menu">
-    <a href="Page1.html">
-        <img class="logo" src="favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
+    <a href="Page1.jsp">
+        <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.html">Расписание</a></li>
-        <li><a href="zhurnal.html">Журнал</a></li>
+        <li><a href="raspisanie.jsp">Расписание</a></li>
+        <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
     <span class="username"></span>
-    <img class="user-avatar" src="avatar.png" alt="Аватар">
+    <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 
 <h1 class="group-heading"><center>Группа 1</center></h1>

@@ -97,15 +97,15 @@
 </head>
 <body>
 <div class="menu">
-    <a href="Page1.html">
-        <img class="logo" src="favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
+    <a href="Page1.jsp">
+        <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.html">Расписание</a></li>
-        <li><a href="zhurnal.html">Журнал</a></li>
+        <li><a href="raspisanie.jsp">Расписание</a></li>
+        <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
     <span class="username"></span>
-    <img class="user-avatar" src="avatar.png" alt="Аватар">
+    <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 
 <div class="container">
