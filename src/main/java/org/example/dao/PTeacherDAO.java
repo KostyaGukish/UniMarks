@@ -26,6 +26,7 @@ public class PTeacherDAO implements TeacherDAO{
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
+
             pteacher temp = new pteacher();
             temp.setId(resultSet.getInt(1));
             temp.setName(resultSet.getString(2));
