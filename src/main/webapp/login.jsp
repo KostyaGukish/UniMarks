@@ -17,7 +17,7 @@
 </style>
 <body>
 
-<form class="box" action="Page1.html" method="post">
+<form class="box" action="Page1.jsp" method="post">
     <h1>Login</h1>
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
@@ -39,7 +39,7 @@
             localStorage.setItem('username', username);
 
             // Перенаправляем на страницу Page1.html
-            window.location.href = 'Page1.html';
+            window.location.href = 'Page1.jsp';
         } else {
             // Если логин или пароль неверны, отображаем всплывающее сообщение
             alert('Неверный логин или пароль');
