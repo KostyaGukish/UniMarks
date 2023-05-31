@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .schedule {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .left-column {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .right-column {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .day-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .day-table caption {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .day-table th,
+  .day-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    vertical-align: top; /* Align content to the top of the cells */
+  }
+  
+  .day-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .day-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
