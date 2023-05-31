@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="blocks.css">
+    <link rel="stylesheet" href="styles/blocks.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная страница</title>
     <style>
         html {
-            background-image: url("fon1.png");
+            background-image: url("images/fon1.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -137,33 +137,33 @@
 </head>
 <body>
 <div class="menu">
-    <a href="Page1.html">
-        <img class="logo" src="favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
+    <a href="Page1.jsp">
+        <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.html">Расписание</a></li>
-        <li><a href="zhurnal.html">Журнал</a></li>
+        <li><a href="raspisanie.jsp">Расписание</a></li>
+        <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
     <span class="username"></span>
-    <img class="user-avatar" src="avatar.png" alt="Аватар">
+    <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 <h1 class="page-title">БГУ это:</h1>
 <div class="container">
     <div class="block-container">
         <div class="block">
-            <img class="block-image" src="obraz.png" alt="Фото 1">
+            <img class="block-image" src="images/obraz.png" alt="Фото 1">
             <div class="block-caption"><centrer>Лучшее образование</centrer></div>
         </div>
         <div class="block">
-            <img class="block-image" src="mss.jpg" alt="Фото 2">
+            <img class="block-image" src="images/mss.jpg" alt="Фото 2">
             <div class="block-caption"><center>Лучшие преподаватели</center></div>
         </div>
         <div class="block">
-            <img class="block-image" src="ways.jpg" alt="Фото 3">
+            <img class="block-image" src="images/ways.jpg" alt="Фото 3">
             <div class="block-caption"><center>Новые возможности</center></div>
         </div>
         <div class="block">
-            <img class="block-image" src="realiz.png" alt="Фото 4">
+            <img class="block-image" src="images/realiz.png" alt="Фото 4">
             <div class="block-caption"><center>Лучшая реализация</center></div>
         </div>
     </div>

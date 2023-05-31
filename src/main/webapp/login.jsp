@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Вход в учётную запись</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <style>
     html {
-        background-image: url("fon1.png");
+        background-image: url("images/fon1.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
