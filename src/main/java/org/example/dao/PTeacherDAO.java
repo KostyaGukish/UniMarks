@@ -19,6 +19,9 @@ public class PTeacherDAO implements TeacherDAO{
     private final static String Update =
             "update pteacher set name=?,surname=?,patronymic=?,subject_id,group_id=? where id = ?;";
 
+    private final static String FIND_BY_LOGIN = "select * from pteacher where pteacher.id = " +
+            "(select puser.teacher_id from puser where login = ?)";
+
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pteacher> pteachers = new ArrayList<>();
@@ -55,6 +58,23 @@ public class PTeacherDAO implements TeacherDAO{
             temp.setPatronymic(resultSet.getString(4));
             temp.setSubject_id(resultSet.getInt(5));
             temp.setGroup_id(resultSet.getInt(6));
+        close(statement);
+        close(connection);
+        return temp;
+    }
+    public pteacher findEntityByLogin(String login) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        Connection connection = Constants.connect();
+        PreparedStatement statement = connection.prepareStatement(FIND_BY_LOGIN);
+        statement.setString(1, login);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        pteacher temp = new pteacher();
+        temp.setId(resultSet.getInt(1));
+        temp.setName(resultSet.getString(2));
+        temp.setSurname(resultSet.getString(3));
+        temp.setPatronymic(resultSet.getString(4));
+        temp.setSubject_id(resultSet.getInt(5));
+        temp.setGroup_id(resultSet.getInt(6));
         close(statement);
         close(connection);
         return temp;

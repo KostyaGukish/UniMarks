@@ -156,12 +156,12 @@
         <tbody>
         <tr>
             <td>1</td>
-            <td>Студент 1</td>
+            <td>${students[0]}</td>
             <td contenteditable="true"></td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Студент 2</td>
+            <td>${students[1]}</td>
             <td contenteditable="true"></td>
         </tr>
         <!-- Добавьте остальные строки для студентов группы 1 -->

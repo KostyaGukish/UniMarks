@@ -40,7 +40,7 @@ public class LoginAction extends HttpServlet {
                 } else {
                     session.setAttribute("entity", "Учитель:");
                     session.setAttribute("rasp1", "teacher_raspisanie.jsp");
-                    session.setAttribute("jorney1", "teacher-zhurnal.jsp");
+                    session.setAttribute("jorney1", "teacher-zhurnal");
                 }
                 name = service.getName(username);
                 session.setAttribute("login", username);

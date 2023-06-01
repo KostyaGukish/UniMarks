@@ -1,6 +1,7 @@
 package org.example.dao;
 
 
+import org.example.entity.TimeTable;
 import org.example.entity.pstudent;
 
 import java.lang.reflect.InvocationTargetException;
@@ -10,6 +11,8 @@ import java.util.List;
 
 public class PStudentDAO implements StudentDAO{
     private final static String FIND_ALL = "select * from pstudent";
+
+    private final static String FIND_BY_GROUP = "select * from pstudent where group_id = ? and id <> 0";
 
     private final static String FIND_BY_ID = "select * from pstudent where id = ?";
 
@@ -38,6 +41,26 @@ public class PStudentDAO implements StudentDAO{
         close(statement);
         close(connection);
         return pteachers;
+    }
+
+    public List getByGroup(int group) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        Connection connection = Constants.connect();
+        List<pstudent> students = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement(FIND_BY_GROUP);
+        statement.setInt(1,group);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            pstudent temp = new pstudent();
+            temp.setId(resultSet.getInt(1));
+            temp.setName(resultSet.getString(2));
+            temp.setSurname(resultSet.getString(3));
+            temp.setPatronymic(resultSet.getString(4));
+            temp.setGroup_id(resultSet.getInt(5));
+            students.add(temp);
+        }
+        close(statement);
+        close(connection);
+        return students;
     }
 
     @Override
