@@ -110,10 +110,10 @@ public class PScheduleDAO implements ScheduleDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setInt(2, o.getGroup_id());
-            statement.setInt(3, o.getSubject_id());
-            statement.setInt(4, o.getWeek_day());
-            statement.setInt(5, o.getNumber());
+            statement.setInt(1, o.getGroup_id());
+            statement.setInt(2, o.getSubject_id());
+            statement.setInt(3, o.getWeek_day());
+            statement.setInt(4, o.getNumber());
             statement.executeQuery();
             close(statement);
             close(connection);
@@ -129,11 +129,11 @@ public class PScheduleDAO implements ScheduleDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Update);
-            statement.setInt(6, id);
-            statement.setInt(2, o.getGroup_id());
-            statement.setInt(3, o.getSubject_id());
-            statement.setInt(4, o.getWeek_day());
-            statement.setInt(5, o.getNumber());
+            statement.setInt(5, id);
+            statement.setInt(1, o.getGroup_id());
+            statement.setInt(2, o.getSubject_id());
+            statement.setInt(3, o.getWeek_day());
+            statement.setInt(4, o.getNumber());
             statement.executeQuery();
             close(statement);
             close(connection);

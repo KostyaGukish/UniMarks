@@ -71,8 +71,7 @@ public class PSubjectDAO implements SubjectDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setInt(1, o.getId());
-            statement.setString(2, o.getName());
+            statement.setString(1, o.getName());
             statement.executeQuery();
             close(statement);
             close(connection);

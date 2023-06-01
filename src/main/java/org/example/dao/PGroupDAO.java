@@ -71,8 +71,7 @@ public class PGroupDAO implements GroupDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setInt(1, o.getId());
-            statement.setString(2, o.getGroupDescription());
+            statement.setString(1, o.getGroupDescription());
             statement.executeQuery();
             close(statement);
             close(connection);

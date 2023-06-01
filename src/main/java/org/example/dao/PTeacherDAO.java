@@ -80,12 +80,11 @@ public class PTeacherDAO implements TeacherDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setInt(1, o.getId());
-            statement.setString(2, o.getName());
-            statement.setString(3, o.getSurname());
-            statement.setString(4, o.getPatronymic());
-            statement.setInt(5, o.getSubject_id());
-            statement.setInt(6, o.getGroup_id());
+            statement.setString(1, o.getName());
+            statement.setString(2, o.getSurname());
+            statement.setString(3, o.getPatronymic());
+            statement.setInt(4, o.getSubject_id());
+            statement.setInt(5, o.getGroup_id());
             statement.executeQuery();
             close(statement);
             close(connection);

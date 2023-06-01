@@ -78,10 +78,10 @@ public class PStudentDAO implements StudentDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setString(2, o.getName());
-            statement.setString(3, o.getSurname());
-            statement.setString(4, o.getPatronymic());
-            statement.setInt(5, o.getGroup_id());
+            statement.setString(1, o.getName());
+            statement.setString(2, o.getSurname());
+            statement.setString(3, o.getPatronymic());
+            statement.setInt(4, o.getGroup_id());
             statement.executeQuery();
             close(statement);
             close(connection);
@@ -97,7 +97,7 @@ public class PStudentDAO implements StudentDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Update);
-            statement.setInt(6, id);
+            statement.setInt(5, id);
             statement.setString(1, o.getName());
             statement.setString(2, o.getSurname());
             statement.setString(3, o.getPatronymic());
