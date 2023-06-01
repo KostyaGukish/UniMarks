@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin-top: 20px;
+  }
+  
+  .journal-table {
+    border-collapse: 50px;
+    width: 80%; /* Изменено на 100% */
+  }
+  
+  .journal-table caption {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .journal-table th,
+  .journal-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  
+  .journal-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .journal-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .journal-table td:nth-child(2) {
+    width: 100%; /* Изменено на 100% */
+  }
+  

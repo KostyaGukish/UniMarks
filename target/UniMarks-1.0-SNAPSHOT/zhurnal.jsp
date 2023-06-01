@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles/blocks.css">
+    <link rel="stylesheet" href="styles/zhurnal.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    <title>Журнал</title>
     <style>
         html {
             background-image: url("images/fon1.png");
@@ -15,7 +15,6 @@
             height: 100%;
             overflow: hidden;
         }
-
         /* Стили для меню */
         .menu {
             display: flex;
@@ -44,59 +43,26 @@
         }
 
         .menu ul li a:hover {
-            background-color: #ffffff; /* Удалите или закомментируйте эту строку */
+            background-color: #ffffff;
             color: #17287d;
-            padding: 10px 10px; /* Увеличьте значения padding по вашему выбору */
-            margin: -10px -10px; /* Увеличьте значения margin по вашему выбору */
+            padding: 10px 10px;
+            margin: -10px -10px;
         }
 
         /* Стили для общего контейнера */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center; /* Добавлено для выравнивания по центру */
-        }
-
-        /* Стили для блоков */
-        .block-container {
             display: flex;
-            justify-content: space-between;
-            margin-top: -500px;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin-top: 20px;
         }
 
-        .block {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 20px;
-            overflow: hidden;
-            perspective: 1000px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-        }
 
-        .block:hover {
-            transform: scale(1.2);
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        .block-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .block-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+        /* Стили для фотографии в тексте */
+        .image-in-text {
+            float: left;
+            margin: 0 20px 20px 0;
         }
 
         /* Стили для панельки контактных данных */
@@ -129,9 +95,30 @@
             height: 50px;
             margin-left: 10px;
         }
-        .page-title {
+
+        .day-table {
+            /* Добавьте следующие стили для сетки таблицы */
+            border-collapse: collapse;
+        }
+
+        .day-table th, .day-table td {
+            /* Добавьте следующие стили для ячеек таблицы */
+            border: 1px solid #000;
+            padding: 8px;
+        }
+
+        .vertical-dates {
+            /* Добавьте следующие стили для вертикального расположения дат */
+            position: relative;
+            writing-mode: vertical-lr;
             text-align: center;
         }
+
+        .vertical-date {
+            /* Добавьте следующие стили для отдельных дат */
+            margin: 2px;
+        }
+
 
     </style>
 </head>
@@ -144,39 +131,70 @@
         <li><a href="raspisanie.jsp">Расписание</a></li>
         <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
-    <p class ="username"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
-<h1 class="page-title">БГУ это:</h1>
-<div class="container">
-    <div class="block-container">
-        <div class="block">
-            <img class="block-image" src="images/obraz.png" alt="Фото 1">
-            <div class="block-caption"><centrer>Лучшее образование</centrer></div>
-        </div>
-        <div class="block">
-            <img class="block-image" src="images/mss.jpg" alt="Фото 2">
-            <div class="block-caption"><center>Лучшие преподаватели</center></div>
-        </div>
-        <div class="block">
-            <img class="block-image" src="images/ways.jpg" alt="Фото 3">
-            <div class="block-caption"><center>Новые возможности</center></div>
-        </div>
-        <div class="block">
-            <img class="block-image" src="images/realiz.png" alt="Фото 4">
-            <div class="block-caption"><center>Лучшая реализация</center></div>
-        </div>
-    </div>
 
-    <div class="contact-panel">
-        <p>Для получения дополнительной информации, свяжитесь с нами:</p>
-        <p>Телефон поддержки: +123456789</p>
-        <p>Справочный центр: +987654321</p>
-    </div>
+<div class="container">
+    <table class="journal-table">
+        <thead>
+        <tr>
+            <th>Предмет</th>
+            <th>Оценки</th>
+            <!--
+            <div class="vertical-dates">
+            <span class="vertical-date">01.05</span>
+          </div></th>
+          <th><div class="vertical-dates">
+            <span class="vertical-date">02.05</span>
+          </div></th>
+          <th><div class="vertical-dates">
+            <span class="vertical-date">03.05</span>
+          </div></th>
+          <th><div class="vertical-dates">
+            <span class="vertical-date">04.05</span>
+          </div></th>
+          <th><div class="vertical-dates">
+            <span class="vertical-date">05.05</span>
+          </div>
+        -->
+
+            <th>Средий балл</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Математика</td>
+            <td>90, 85, 95, 100, 90, 80, 85, 75, 100</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Физика</td>
+            <td>80, 85, 90</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>Философия</td>
+            <td>90, 85, 95</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>БЖЧ</td>
+            <td>90, 85, 95</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Программировние</td>
+            <td>90, 85, 95</td>
+            <td>90</td>
+        </tr>
+        <!-- Add more rows for other subjects -->
+        </tbody>
+    </table>
 </div>
 
-<%--<script>
+
+<script>
     // Получение значения "loggedInUser" из локального хранилища
     var loggedInUser = sessionStorage.getItem('loggedInUser');
 
@@ -185,8 +203,6 @@
     if (loggedInUser && usernameElement) {
         usernameElement.textContent = loggedInUser;
     }
-</script>--%>
-
-
+</script>
 </body>
 </html>
