@@ -1,7 +1,11 @@
 package org.example;
 
 import org.example.dao.DaoException;
+import org.example.dao.PStudentDAO;
+import org.example.dao.PTeacherDAO;
 import org.example.dao.PUserDao;
+import org.example.entity.pstudent;
+import org.example.entity.pteacher;
 import org.example.entity.puser;
 
 import java.io.IOException;
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+    String name;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Получение значения введенного имени пользователя и фамилии из запроса
         String username = request.getParameter("username");
@@ -35,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             // Сохранение имени и фамилии пользователя в атрибуты сессии
-            session.setAttribute("loggedInUser", username);
+            session.setAttribute("loggedInUser", name);
             // Здесь вы можете использовать вашу логику для получения фамилии
             // Перенаправление на следующую страницу
             response.sendRedirect("Page1.jsp");
@@ -51,6 +56,15 @@ public class LoginServlet extends HttpServlet {
         try {
             puser tryPuser = pUserDao.findEntityById(username);
             if (tryPuser.getPassword().equals(password)) {
+                if (tryPuser.getStudent_id() != 0) {
+                    PStudentDAO pStudentDAO = new PStudentDAO();
+                    pstudent stud = pStudentDAO.findEntityById(tryPuser.getStudent_id());
+                    name = stud.getSurname() + stud.getName() + stud.getPatronymic();
+                } else {
+                    PTeacherDAO pTeacherDAO = new PTeacherDAO();
+                    pteacher teach = pTeacherDAO.findEntityById(tryPuser.getTeacher_id());
+                    name = teach.getSurname() + teach.getName() + teach.getPatronymic();
+                }
                 return true;
             }
             else return false;

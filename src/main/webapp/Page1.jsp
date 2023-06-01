@@ -175,7 +175,7 @@
     </div>
 </div>
 
-<script>
+<%--<script>
     // Получение значения "loggedInUser" из локального хранилища
     var loggedInUser = sessionStorage.getItem('loggedInUser');
 
@@ -184,7 +184,7 @@
     if (loggedInUser && usernameElement) {
         usernameElement.textContent = loggedInUser;
     }
-</script>
+</script>--%>
 
 
 </body>
