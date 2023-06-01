@@ -11,7 +11,5 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        PTeacherDAO pTeacherDAO = new PTeacherDAO();
-        ArrayList<pstudent> pstudents= (ArrayList<pstudent>) pTeacherDAO.SelectStudents("t1");
     }
 }
