@@ -10,14 +10,14 @@ import java.util.List;
 public class PUserDao implements UserDAO{
     private final static String FIND_ALL = "select * from puser";
 
-    private final static String FIND_BY_ID = "select * from puser where login = ?";
+    private final static String FIND_BY_ID = "select * from puser where plogin = ?";
 
     private final static String Create =
-            "insert into puser (login,password,teacher_id,student_id) values(?,?,?,?);";
+            "insert into puser (plogin,password,teacher_id,student_id) values(?,?,?,?);";
     private final static String Delete =
-            "delete from puser where login = ?";
+            "delete from puser where plogin = ?";
     private final static String Update =
-            "update puser set password=?,teacher_id=?,student_id=? where login = ?";
+            "update puser set password=?,teacher_id=?,student_id=? where plogin = ?";
 
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
@@ -41,8 +41,9 @@ public class PUserDao implements UserDAO{
     @Override
     public puser findEntityById(String id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Connection connection = Constants.connect();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(FIND_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+        statement.setString(1, id);
+        ResultSet resultSet = statement.executeQuery();
             puser temp = new puser();
             temp.setLogin(resultSet.getString(1));
             temp.setPassword(resultSet.getString(2));
