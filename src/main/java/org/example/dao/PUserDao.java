@@ -10,14 +10,14 @@ import java.util.List;
 public class PUserDao implements UserDAO{
     private final static String FIND_ALL = "select * from puser";
 
-    private final static String FIND_BY_ID = "select * from puser where plogin = ?";
+    private final static String FIND_BY_ID = "select * from puser where login = ?";
 
     private final static String Create =
-            "insert into puser (plogin,password,teacher_id,student_id) values(?,?,?,?);";
+            "insert into puser (login,password,teacher_id,student_id) values(?,?,?,?);";
     private final static String Delete =
-            "delete from puser where plogin = ?";
+            "delete from puser where login = ?";
     private final static String Update =
-            "update puser set password=?,teacher_id=?,student_id=? where plogin = ?";
+            "update puser set password=?,teacher_id=?,student_id=? where login = ?";
 
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {

@@ -144,7 +144,7 @@
         <li><a href="raspisanie.jsp">Расписание</a></li>
         <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
-    <span class="username"></span>
+    <span class= username> username </span>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 <h1 class="page-title">БГУ это:</h1>
