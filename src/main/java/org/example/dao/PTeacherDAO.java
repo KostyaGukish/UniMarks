@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.entity.pstudent;
 import org.example.entity.pteacher;
 
 import java.lang.reflect.InvocationTargetException;
@@ -18,6 +19,28 @@ public class PTeacherDAO implements TeacherDAO{
             "delete from pteacher where id = ?";
     private final static String Update =
             "update pteacher set name=?,surname=?,patronymic=?,subject_id,group_id=? where id = ?;";
+    private final static String SelectDepStud =
+            "select * from pstudent where pstudent.group_id in(select group_id from pteacher,puser where puser.teacher_id = pteacher.id and puser.login = ?) and pstudent.name != 'q';";
+
+    public List SelectStudents(String TeacherLogin) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        List<pstudent> pstudents = new ArrayList<>();
+        Connection connection = Constants.connect();
+        PreparedStatement statement = connection.prepareStatement(SelectDepStud);
+        statement.setString(1,TeacherLogin);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            pstudent temp = new pstudent();
+            temp.setId(resultSet.getInt(1));
+            temp.setName(resultSet.getString(2));
+            temp.setSurname(resultSet.getString(3));
+            temp.setPatronymic(resultSet.getString(4));
+            temp.setGroup_id(resultSet.getInt(5));
+            pstudents.add(temp);
+        }
+        close(statement);
+        close(connection);
+        return pstudents;
+    }
 
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {

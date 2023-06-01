@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.entity.SelectedMarks;
 import org.example.entity.pevaluation;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,6 +20,32 @@ public class pevaluationDAO implements DAOBase{
             "delete from pevaluation where id = ?";
     private final static String Update =
             "update pevaluation set subject_id=?,mark=?,attendance=?,date=?,student_id=? where id = ?";
+    private final static String SelectMarks =
+                    "select pevaluation.mark,psubject.name from pevaluation,psubject\n" +
+                    "where \n" +
+                    "psubject.id = pevaluation.subject_id\n" +
+                    "and \n" +
+                    "pevaluation.student_id in (select pstudent.id from pstudent,puser where puser.student_id = pstudent.id and puser.login = ?);\n" +
+                    "\n";
+
+    public List SelectAllUserMarks(String login) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        List<SelectedMarks> selectedMarks = new ArrayList<>();
+        Connection connection = Constants.connect();
+        PreparedStatement statement = connection.prepareStatement(SelectMarks);
+        statement.setString(1, login);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            SelectedMarks temp = new SelectedMarks();
+            temp.setMark(resultSet.getInt(1));
+            temp.setSubject_name(resultSet.getString(2));
+            selectedMarks.add(temp);
+        }
+        close(statement);
+        close(connection);
+        return selectedMarks;
+    }
+
+
 
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
