@@ -39,8 +39,10 @@ public class PGroupDAO implements GroupDAO{
     @Override
     public pgroup findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Connection connection = Constants.connect();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(FIND_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+        statement.setInt(1,id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
         pgroup temp = new pgroup();
         temp.setId(resultSet.getInt(1));
         temp.setGroupDescription(resultSet.getString(2));
@@ -69,8 +71,7 @@ public class PGroupDAO implements GroupDAO{
         try {
             Connection connection = Constants.connect();
             PreparedStatement statement = connection.prepareStatement(Create);
-            statement.setInt(1, o.getId());
-            statement.setString(2, o.getGroupDescription());
+            statement.setString(1, o.getGroupDescription());
             statement.executeQuery();
             close(statement);
             close(connection);
