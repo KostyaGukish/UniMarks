@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             // Сохранение имени и фамилии пользователя в атрибуты сессии
-            session.setAttribute("username", username);
+            session.setAttribute("loggedInUser", username);
             // Здесь вы можете использовать вашу логику для получения фамилии
             // Перенаправление на следующую страницу
             response.sendRedirect("Page1.jsp");

@@ -111,7 +111,7 @@
         <li><a href="raspisanie.jsp">Расписание</a></li>
         <li><a href="zhurnal.jsp">Журнал</a></li>
     </ul>
-    <span class="username"></span>
+    <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 
@@ -143,13 +143,13 @@
 
 
 <script>
-    // Получаем значение "username" из локального хранилища
-    var username = localStorage.getItem('username');
+    // Получение значения "loggedInUser" из локального хранилища
+    var loggedInUser = sessionStorage.getItem('loggedInUser');
 
-    // Отображаем имя пользователя в меню
+    // Отображение имени пользователя в меню
     var usernameElement = document.querySelector('.username');
-    if (username && usernameElement) {
-        usernameElement.textContent = username;
+    if (loggedInUser && usernameElement) {
+        usernameElement.textContent = loggedInUser;
     }
 </script>
 </body>
