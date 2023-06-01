@@ -141,8 +141,19 @@
         <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.jsp">Расписание</a></li>
-        <li><a href="zhurnal.jsp">Журнал</a></li>
+        <li><a href="raspisanie.jsp" id="rasp">Расписание</a></li>
+        <li><a href="zhurnal.jsp" id="jorney">Журнал</a></li>
+        <script>
+            // Получение значения "loggedInUser" из локального хранилища
+            var entity = sessionStorage.getItem('entity');
+            if (entity === "Студент:") {
+                document.getElementById('rasp').href = "raspisanie.jsp";
+                document.getElementById('jorney').href = "zhurnal.jsp";
+            } else {
+                document.getElementById('rasp').href = "teacher_raspisanie.jsp";
+                document.getElementById('jorney').href = "teacher-zhurnal.jsp";
+            }
+        </script>
     </ul>
     <p class ="username"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
