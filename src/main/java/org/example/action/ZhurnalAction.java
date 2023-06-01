@@ -1,10 +1,9 @@
-package org.example.service;
+package org.example.action;
 
 import org.example.dao.pevaluationDAO;
 import org.example.entity.SelectedMarks;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ZhurnalService extends HttpServlet {
+public class ZhurnalAction extends HttpServlet {
     public class pair{
         pair(String first){
             this.first =first;

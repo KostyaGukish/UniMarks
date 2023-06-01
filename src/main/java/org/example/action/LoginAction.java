@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.action;
 
 import org.example.dao.PStudentDAO;
 import org.example.dao.PTeacherDAO;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class LoginService extends HttpServlet {
+public class LoginAction extends HttpServlet {
     String name;
     String entity;
     String rasp;

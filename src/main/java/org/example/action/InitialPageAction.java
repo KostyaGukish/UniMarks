@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebServlet("")
-public class InitialPageService extends HttpServlet {
+public class InitialPageAction extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Перенаправление на страницу login.jsp

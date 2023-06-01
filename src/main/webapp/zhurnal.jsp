@@ -1,6 +1,6 @@
 <%@ page import="org.example.entity.TimeTable" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.service.ZhurnalService" %>
+<%@ page import="org.example.action.ZhurnalAction" %>
 <%@page isErrorPage="true" language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -154,8 +154,8 @@
         </tr>
         </thead>
         <tbody>
-        <% List<ZhurnalService.pair> temp = (List<ZhurnalService.pair>) request.getAttribute("temp");
-            for (ZhurnalService.pair p : temp) { %>
+        <% List<ZhurnalAction.pair> temp = (List<ZhurnalAction.pair>) request.getAttribute("temp");
+            for (ZhurnalAction.pair p : temp) { %>
         <tr>
             <td><%= p.first %></td>
             <td><% for (Integer mark : p.second) { %>

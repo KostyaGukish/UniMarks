@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.service.InitialPageService;
-import org.example.service.LoginService;
-import org.example.service.StudentScheduleService;
-import org.example.service.ZhurnalService;
+import org.example.action.InitialPageAction;
+import org.example.action.LoginAction;
+import org.example.action.StudentScheduleAction;
+import org.example.action.ZhurnalAction;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,38 +17,38 @@ import javax.servlet.http.HttpServletResponse;
 public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURL().toString().equals("http://localhost:8081/LoginServlet")) {
-            LoginService loginService = new LoginService();
-            loginService.doGet(request, response);
+            LoginAction loginAction = new LoginAction();
+            loginAction.doGet(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/")) {
-            InitialPageService initialPage = new InitialPageService();
+            InitialPageAction initialPage = new InitialPageAction();
             initialPage.doGet(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/zhurnal")) {
-            ZhurnalService zhurnalService = new ZhurnalService();
-            zhurnalService.doGet(request, response);
+            ZhurnalAction zhurnalAction = new ZhurnalAction();
+            zhurnalAction.doGet(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/raspisanie")) {
-            StudentScheduleService studentScheduleService = new StudentScheduleService();
-            studentScheduleService.doGet(request, response);
+            StudentScheduleAction studentScheduleAction = new StudentScheduleAction();
+            studentScheduleAction.doGet(request, response);
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURL().toString().equals("http://localhost:8081/LoginServlet")) {
-            LoginService loginService = new LoginService();
-            loginService.doPost(request, response);
+            LoginAction loginAction = new LoginAction();
+            loginAction.doPost(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/")) {
-            InitialPageService initialPage = new InitialPageService();
+            InitialPageAction initialPage = new InitialPageAction();
             initialPage.doPost(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/zhurnal")) {
-            ZhurnalService zhurnalService = new ZhurnalService();
-            zhurnalService.doPost(request, response);
+            ZhurnalAction zhurnalAction = new ZhurnalAction();
+            zhurnalAction.doPost(request, response);
         }
         if (request.getRequestURL().toString().equals("http://localhost:8081/raspisanie")) {
-            StudentScheduleService studentScheduleService = new StudentScheduleService();
-            studentScheduleService.doPost(request, response);
+            StudentScheduleAction studentScheduleAction = new StudentScheduleAction();
+            studentScheduleAction.doPost(request, response);
         }
     }
 }
