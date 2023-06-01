@@ -92,6 +92,12 @@
             height: 50px;
             margin-left: 10px;
         }
+        .entity {
+            margin-left: 600px; /* Уменьшите значение здесь */
+            font-size: 18px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
     </style>
 </head>
@@ -101,9 +107,10 @@
         <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.jsp">Расписание</a></li>
-        <li><a href="zhurnal.jsp">Журнал</a></li>
+        <li><a href=${rasp1} id="rasp">Расписание</a></li>
+        <li><a href=${jorney1} id="jorney">Журнал</a></li>
     </ul>
+    <p class ="entity"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>

@@ -123,6 +123,12 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
+        .entity {
+            margin-left: 600px; /* Уменьшите значение здесь */
+            font-size: 18px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
         /* Стили для аватара пользователя */
         .user-avatar {
@@ -145,31 +151,31 @@
         <li><a href=${rasp1} id="rasp">Расписание</a></li>
         <li><a href=${jorney1} id="jorney">Журнал</a></li>
     </ul>
-    <p class ="username"> ${entity}</p>
+    <p class ="entity"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
-<%--    <script>--%>
-<%--        // Получение значения "loggedInUser" из локального хранилища--%>
-<%--        var entity = sessionStorage.getItem('entity');--%>
-<%--        if (entity === "Студент:") {--%>
-<%--            document.getElementById('rasp').href = "raspisanie.jsp";--%>
-<%--            document.getElementById('jorney').href = "zhurnal.jsp";--%>
-<%--        } else {--%>
-<%--            document.getElementById('rasp').href = entity;--%>
-<%--            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
-<%--        }--%>
-<%--    </script>--%>
-<%--    <%--%>
-<%--        String entity = (String) session.getAttribute("entity");--%>
-<%--        if (entity.equals("Студент:")) {--%>
-<%--            out.print("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
-<%--//            document.getElementById('rasp').href = "raspisanie.jsp";--%>
-<%--//            document.getElementById('jorney').href = "zhurnal.jsp";--%>
-<%--        } else {--%>
-<%--            out.println("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
-<%--//            document.getElementById('rasp').href = entity;--%>
-<%--//            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
-<%--        }--%>
-<%--    %>--%>
+    <%--    <script>--%>
+    <%--        // Получение значения "loggedInUser" из локального хранилища--%>
+    <%--        var entity = sessionStorage.getItem('entity');--%>
+    <%--        if (entity === "Студент:") {--%>
+    <%--            document.getElementById('rasp').href = "raspisanie.jsp";--%>
+    <%--            document.getElementById('jorney').href = "zhurnal.jsp";--%>
+    <%--        } else {--%>
+    <%--            document.getElementById('rasp').href = entity;--%>
+    <%--            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
+    <%--        }--%>
+    <%--    </script>--%>
+    <%--    <%--%>
+    <%--        String entity = (String) session.getAttribute("entity");--%>
+    <%--        if (entity.equals("Студент:")) {--%>
+    <%--            out.print("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
+    <%--//            document.getElementById('rasp').href = "raspisanie.jsp";--%>
+    <%--//            document.getElementById('jorney').href = "zhurnal.jsp";--%>
+    <%--        } else {--%>
+    <%--            out.println("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
+    <%--//            document.getElementById('rasp').href = entity;--%>
+    <%--//            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
+    <%--        }--%>
+    <%--    %>--%>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 <h1 class="page-title">БГУ это:</h1>

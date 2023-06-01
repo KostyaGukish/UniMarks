@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
     String entity;
     String rasp;
     String jorney;
+    String login;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Получение значения введенного имени пользователя и фамилии из запроса
         String username = request.getParameter("username");
@@ -43,20 +44,20 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             // Сохранение имени и фамилии пользователя в атрибуты сессии
+            session.setAttribute("login", login);
             session.setAttribute("loggedInUser", name);
             session.setAttribute("entity", entity);
             session.setAttribute("rasp1", rasp);
             session.setAttribute("jorney1", jorney);
             // Здесь вы можете использовать вашу логику для получения фамилии
             // Перенаправление на следующую страницу
-            response.sendRedirect("Page1.jsp");
+            response.sendRedirect("Page1.jsp?login=" + login);
         } else {
             request.setAttribute("javax.servlet.error.message", "Неверный логин или пароль");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
-    // Пример метода для проверки наличия пользователя в базе данных (здесь нужно добавить свою логику)
     private boolean checkUserExists(String username, String password) throws Exception {
         PUserDao pUserDao = new PUserDao();
         try {
@@ -69,6 +70,9 @@ public class LoginServlet extends HttpServlet {
                     entity = "Студент:";
                     rasp = "raspisanie.jsp";
                     jorney = "zhurnal.jsp";
+                    rasp = "raspisanie";
+                    jorney = "zhurnal";
+                    login = username;
                 } else {
                     PTeacherDAO pTeacherDAO = new PTeacherDAO();
                     pteacher teach = pTeacherDAO.findEntityById(tryPuser.getTeacher_id());
@@ -76,6 +80,7 @@ public class LoginServlet extends HttpServlet {
                     entity = "Учитель:";
                     rasp = "teacher_raspisanie.jsp";
                     jorney = "teacher-zhurnal.jsp";
+                    login = username;
                 }
                 return true;
             }

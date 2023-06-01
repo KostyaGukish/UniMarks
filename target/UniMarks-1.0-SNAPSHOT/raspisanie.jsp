@@ -92,6 +92,12 @@
             height: 50px;
             margin-left: 10px;
         }
+        .entity {
+            margin-left: 600px; /* Уменьшите значение здесь */
+            font-size: 18px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
     </style>
 </head>
@@ -101,9 +107,10 @@
         <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.jsp">Расписание</a></li>
-        <li><a href="zhurnal.jsp">Журнал</a></li>
+        <li><a href="raspisanie">Расписание</a></li>
+        <li><a href="zhurnal">Журнал</a></li>
     </ul>
+    <p class ="entity"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
@@ -122,25 +129,25 @@
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Математика</td>
+                    <td>${predmet[1][1]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[1][2]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[1][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[1][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->
@@ -156,25 +163,25 @@
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Математика</td>
+                    <td>${predmet[2][1]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[2][2]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[2][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[2][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->
@@ -190,25 +197,25 @@
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Математика</td>
+                    <td>${predmet[3][1]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[3][2]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[3][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[3][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->
@@ -229,25 +236,25 @@
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Физика</td>
+                    <td>${predmet[4][1]}</td>
                     <td>Петров</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[4][2]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[4][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[4][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->
@@ -263,25 +270,25 @@
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Физика</td>
+                    <td>${predmet[5][1]}</td>
                     <td>Петров</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[5][2]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[5][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[5][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->
@@ -291,31 +298,31 @@
                 <tr>
                     <th>№ пары</th>
                     <th>Время</th>
-                    <th>Предмет</th>
+                    <th>${predmet[6][1]}</th>
                     <th>Преподаватель</th>
                 </tr>
                 <tr>
                     <td>1</td>
                     <td>8:00 - 9:30</td>
-                    <td>Физика</td>
+                    <td>${predmet[6][2]}</td>
                     <td>Петров</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>9:45 - 11:05</td>
-                    <td>Математика</td>
+                    <td>${predmet[6][3]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>11:15 - 12:35</td>
-                    <td>Математика</td>
+                    <td>${predmet[6][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>13:00 - 14:20</td>
-                    <td>Математика</td>
+                    <td>${predmet[6][4]}</td>
                     <td>Иванов</td>
                 </tr>
                 <!-- Добавьте остальные строки для каждой пары -->

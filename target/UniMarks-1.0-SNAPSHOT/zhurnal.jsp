@@ -1,3 +1,6 @@
+<%@ page import="org.example.entity.TimeTable" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.example.ZhurnalServlet" %>
 <%@page isErrorPage="true" language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,6 +91,12 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
+        .entity {
+            margin-left: 600px; /* Уменьшите значение здесь */
+            font-size: 18px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
         /* Стили для аватара пользователя */
         .user-avatar {
@@ -128,9 +137,10 @@
         <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.jsp">Расписание</a></li>
-        <li><a href="zhurnal.jsp">Журнал</a></li>
+        <li><a href="raspisanie">Расписание</a></li>
+        <li><a href="zhurnal">Журнал</a></li>
     </ul>
+    <p class ="entity"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
@@ -141,58 +151,21 @@
         <tr>
             <th>Предмет</th>
             <th>Оценки</th>
-            <!--
-            <div class="vertical-dates">
-            <span class="vertical-date">01.05</span>
-          </div></th>
-          <th><div class="vertical-dates">
-            <span class="vertical-date">02.05</span>
-          </div></th>
-          <th><div class="vertical-dates">
-            <span class="vertical-date">03.05</span>
-          </div></th>
-          <th><div class="vertical-dates">
-            <span class="vertical-date">04.05</span>
-          </div></th>
-          <th><div class="vertical-dates">
-            <span class="vertical-date">05.05</span>
-          </div>
-        -->
-
-            <th>Средий балл</th>
         </tr>
         </thead>
         <tbody>
+        <% List<ZhurnalServlet.pair> temp = (List<ZhurnalServlet.pair>) request.getAttribute("temp");
+            for (ZhurnalServlet.pair p : temp) { %>
         <tr>
-            <td>Математика</td>
-            <td>90, 85, 95, 100, 90, 80, 85, 75, 100</td>
-            <td>90</td>
+            <td><%= p.first %></td>
+            <td><% for (Integer mark : p.second) { %>
+                <%= mark %>
+                <% } %></td>
         </tr>
-        <tr>
-            <td>Физика</td>
-            <td>80, 85, 90</td>
-            <td>85</td>
-        </tr>
-        <tr>
-            <td>Философия</td>
-            <td>90, 85, 95</td>
-            <td>90</td>
-        </tr>
-        <tr>
-            <td>БЖЧ</td>
-            <td>90, 85, 95</td>
-            <td>90</td>
-        </tr>
-        <tr>
-            <td>Программировние</td>
-            <td>90, 85, 95</td>
-            <td>90</td>
-        </tr>
-        <!-- Add more rows for other subjects -->
+        <% } %>
         </tbody>
     </table>
 </div>
-
 
 <script>
     // Получение значения "loggedInUser" из локального хранилища
