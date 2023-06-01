@@ -26,20 +26,8 @@ public class LoginServlet extends HttpServlet {
         boolean userExists = false;
         try {
             userExists = checkUserExists(username, password);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (DaoException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            request.setAttribute("javax.servlet.error.message", null);
         }
 
         if (userExists) {
@@ -48,22 +36,26 @@ public class LoginServlet extends HttpServlet {
 
             // Сохранение имени и фамилии пользователя в атрибуты сессии
             session.setAttribute("username", username);
-             // Здесь вы можете использовать вашу логику для получения фамилии
+            // Здесь вы можете использовать вашу логику для получения фамилии
             // Перенаправление на следующую страницу
             response.sendRedirect("Page1.jsp");
         } else {
-            // Если пользователь не существует, отправляем ошибку и сообщение об ошибке на страницу входа
-            //response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Неверный логин или пароль");
+            request.setAttribute("javax.servlet.error.message", "Неверный логин или пароль");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
     // Пример метода для проверки наличия пользователя в базе данных (здесь нужно добавить свою логику)
-    private boolean checkUserExists(String username, String password) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    private boolean checkUserExists(String username, String password) throws Exception {
         PUserDao pUserDao = new PUserDao();
-        puser tryPuser =  pUserDao.findEntityById(username);
-        if(tryPuser.getPassword().equals(password)){
-            return true;
+        try {
+            puser tryPuser = pUserDao.findEntityById(username);
+            if (tryPuser.getPassword().equals(password)) {
+                return true;
+            }
+            else return false;
+        } catch (Exception e) {
+            return false;
         }
-        else return false;
     }
 }
