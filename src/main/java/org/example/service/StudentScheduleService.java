@@ -25,15 +25,18 @@ public class StudentScheduleService extends HttpServlet {
         String login = (String) request.getSession().getAttribute("login");
 
         String[][] predmet = new String[10][10];
+        String[][] teacher = new String[10][10];
 
         PScheduleDAO pScheduleDAO = new PScheduleDAO();
         try {
             ArrayList<TimeTable> schedule = new ArrayList<>(pScheduleDAO.findTimeTableForUser(login));
             for (TimeTable item: schedule) {
                 predmet[item.getDay_of_week()][item.getSubject_number()] = item.getSubject_name();
+                teacher[item.getDay_of_week()][item.getSubject_number()] = item.getPteacher_surname();
             }
 
             session.setAttribute("predmet", predmet);
+            session.setAttribute("teacher", teacher);
             request.getRequestDispatcher("raspisanie.jsp").forward(request, response);
         } catch (DaoException e) {
             throw new RuntimeException(e);
