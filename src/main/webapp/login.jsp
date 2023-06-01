@@ -17,7 +17,7 @@
 </style>
 <body>
 
-<form class="box"  method="post">
+<form class="box"  action="/LoginServlet" method="post">
     <h1>Login</h1>
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">

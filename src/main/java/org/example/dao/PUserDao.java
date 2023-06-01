@@ -44,9 +44,10 @@ public class PUserDao implements UserDAO{
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setString(1, id);
         ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
             puser temp = new puser();
-            temp.setLogin(resultSet.getString(1));
-            temp.setPassword(resultSet.getString(2));
+            temp.setLogin(resultSet.getString(1).replace(" ", ""));
+            temp.setPassword(resultSet.getString(2).replace(" ", ""));
             temp.setTeacher_id(resultSet.getInt(3));
             temp.setStudent_id(resultSet.getInt(4));
         close(statement);
