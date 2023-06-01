@@ -39,8 +39,10 @@ public class PSubjectDAO implements SubjectDAO{
     @Override
     public psubject findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Connection connection = Constants.connect();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(FIND_BY_ID);
+        PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+        statement.setInt(1,id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
         psubject temp = new psubject();
         temp.setId(resultSet.getInt(1));
         temp.setName(resultSet.getString(2));
