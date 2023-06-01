@@ -143,7 +143,7 @@
     <a href="login.jsp" class="logout-button">Выход</a>
 </div>
 
-<h1 class="group-heading"><center>Группа 1</center></h1>
+<h1 class="group-heading"><center>Группа ${group}</center></h1>
 <div class="container">
     <table class="journal-table">
         <thead>
@@ -164,6 +164,47 @@
             <td>${students[1]}</td>
             <td contenteditable="true"></td>
         </tr>
+        <tr>
+            <td>3</td>
+            <td>${students[2]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>${students[3]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>${students[4]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>${students[5]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>${students[6]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>${students[7]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>${students[8]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>${students[9]}</td>
+            <td contenteditable="true"></td>
+        </tr>
+
         <!-- Добавьте остальные строки для студентов группы 1 -->
         </tbody>
     </table>

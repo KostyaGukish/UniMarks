@@ -30,4 +30,9 @@ public class TeacherZhurnalService {
         }
         return strings;
     }
+
+    public int getGroup(String login) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        pteacher teacher = pTeacherDAO.findEntityByLogin(login);
+        return teacher.getGroup_id();
+    }
 }

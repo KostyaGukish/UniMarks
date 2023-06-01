@@ -22,6 +22,8 @@ public class TeacherZhurnalAction extends HttpServlet {
 
             ArrayList<String> students = service.getStudents(login);
             request.setAttribute("students", students);
+            int group = service.getGroup(login);
+            request.setAttribute("group", group);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
