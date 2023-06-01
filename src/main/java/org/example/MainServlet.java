@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet({"", "/LoginServlet", "/zhurnal", "/raspisanie"})
+@WebServlet({"", "/LoginServlet", "/zhurnal", "/raspisanie", ""})
 public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getRequestURL().toString().equals("http://localhost:8081/LoginServlet")) {

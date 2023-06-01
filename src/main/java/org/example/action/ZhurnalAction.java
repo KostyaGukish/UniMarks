@@ -2,6 +2,7 @@ package org.example.action;
 
 import org.example.dao.pevaluationDAO;
 import org.example.entity.SelectedMarks;
+import org.example.service.ZhurnalService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +25,11 @@ public class ZhurnalAction extends HttpServlet {
         // Здесь можно выполнить логику для получения данных из базы данных
         // и сохранить их в атрибуты запроса или сессии, чтобы передать на страницу zhurnal.jsp
         response.setContentType("text/html");
-        pevaluationDAO pevaluationDAO = new pevaluationDAO();
-        ArrayList<SelectedMarks> timeTables = null;
+
+        ZhurnalService service = new ZhurnalService();
         try {
             String login = (String) request.getSession().getAttribute("login");
-            timeTables = (ArrayList<SelectedMarks>) pevaluationDAO.SelectAllUserMarks(login);
+            ArrayList<SelectedMarks> timeTables = service.getTimeTables(login);
 
             ArrayList<pair> temp = new ArrayList<>();
             for (int i = 0; i < timeTables.size(); i++) {

@@ -2,6 +2,7 @@ package org.example.action;
 
 import org.example.dao.*;
 import org.example.entity.*;
+import org.example.service.StudentScheduleService;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -24,9 +25,9 @@ public class StudentScheduleAction extends HttpServlet {
         String[][] predmet = new String[10][10];
         String[][] teacher = new String[10][10];
 
-        PScheduleDAO pScheduleDAO = new PScheduleDAO();
+        StudentScheduleService service = new StudentScheduleService();
         try {
-            ArrayList<TimeTable> schedule = new ArrayList<>(pScheduleDAO.findTimeTableForUser(login));
+            ArrayList<TimeTable> schedule = service.getSchedule(login);
             for (TimeTable item: schedule) {
                 predmet[item.getDay_of_week()][item.getSubject_number()] = item.getSubject_name();
                 teacher[item.getDay_of_week()][item.getSubject_number()] = item.getPteacher_surname();
