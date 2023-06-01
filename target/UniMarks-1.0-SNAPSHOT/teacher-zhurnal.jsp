@@ -75,7 +75,13 @@
         .username {
             margin-left: auto;
             font-size: 20px;
-            margin-right: 20px;
+            margin-right: 30px;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .entity {
+            margin-left:550px; /* Уменьшите значение здесь */
+            font-size: 18px;
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
@@ -85,6 +91,26 @@
             width: 50px;
             height: 50px;
             margin-left: 10px;
+            margin-right: 20px;
+        }
+        .page-title {
+            text-align: center;
+        }
+        .logout-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+
+        .logout-button:hover {
+            background-color: #e27272;
         }
 
         /* Стили для колонки "Студент" */
@@ -100,12 +126,6 @@
         .group-heading {
             font-size: 26px;
         }
-        .entity {
-            margin-left: 600px; /* Уменьшите значение здесь */
-            font-size: 18px;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-        }
     </style>
 </head>
 <body>
@@ -120,6 +140,7 @@
     <p class ="entity"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
+    <a href="login.jsp" class="logout-button">Выход</a>
 </div>
 
 <h1 class="group-heading"><center>Группа 1</center></h1>

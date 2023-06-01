@@ -24,6 +24,16 @@
     <input type="submit" name="login" value="Login">
 </form>
 
+<script>
+    // Отключение кнопок навигации
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function (event) {
+        history.pushState(null, null, location.href);
+    });
+</script>
+
+
+
 <%-- Проверка наличия ошибки и отображение сообщения об ошибке --%>
 <% if (request.getAttribute("javax.servlet.error.message") != null) { %>
 <script>
