@@ -1,3 +1,4 @@
+<%@ page language="java" %>
 <%@page isErrorPage="true" language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,22 +142,34 @@
         <img class="logo" src="images/favicon.png" alt="Логотип" style="width: 50px; height: 50px; margin-right: 30px;">
     </a>
     <ul>
-        <li><a href="raspisanie.jsp" id="rasp">Расписание</a></li>
-        <li><a href="zhurnal.jsp" id="jorney">Журнал</a></li>
-        <script>
-            // Получение значения "loggedInUser" из локального хранилища
-            var entity = sessionStorage.getItem('entity');
-            if (entity === "Студент:") {
-                document.getElementById('rasp').href = "raspisanie.jsp";
-                document.getElementById('jorney').href = "zhurnal.jsp";
-            } else {
-                document.getElementById('rasp').href = "teacher_raspisanie.jsp";
-                document.getElementById('jorney').href = "teacher-zhurnal.jsp";
-            }
-        </script>
+        <li><a href=${rasp1} id="rasp">Расписание</a></li>
+        <li><a href=${jorney1} id="jorney">Журнал</a></li>
     </ul>
     <p class ="username"> ${entity}</p>
     <p class ="username"> ${loggedInUser}</p>
+<%--    <script>--%>
+<%--        // Получение значения "loggedInUser" из локального хранилища--%>
+<%--        var entity = sessionStorage.getItem('entity');--%>
+<%--        if (entity === "Студент:") {--%>
+<%--            document.getElementById('rasp').href = "raspisanie.jsp";--%>
+<%--            document.getElementById('jorney').href = "zhurnal.jsp";--%>
+<%--        } else {--%>
+<%--            document.getElementById('rasp').href = entity;--%>
+<%--            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
+<%--        }--%>
+<%--    </script>--%>
+<%--    <%--%>
+<%--        String entity = (String) session.getAttribute("entity");--%>
+<%--        if (entity.equals("Студент:")) {--%>
+<%--            out.print("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
+<%--//            document.getElementById('rasp').href = "raspisanie.jsp";--%>
+<%--//            document.getElementById('jorney').href = "zhurnal.jsp";--%>
+<%--        } else {--%>
+<%--            out.println("<li><a href=\"raspisanie.jsp\" id=\"rasp\">Расписание</a></li>");--%>
+<%--//            document.getElementById('rasp').href = entity;--%>
+<%--//            document.getElementById('jorney').href = "teacher-zhurnal.jsp";--%>
+<%--        }--%>
+<%--    %>--%>
     <img class="user-avatar" src="images/avatar.png" alt="Аватар">
 </div>
 <h1 class="page-title">БГУ это:</h1>

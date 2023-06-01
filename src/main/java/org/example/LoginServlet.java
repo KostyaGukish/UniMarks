@@ -23,6 +23,8 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
     String name;
     String entity;
+    String rasp;
+    String jorney;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Получение значения введенного имени пользователя и фамилии из запроса
         String username = request.getParameter("username");
@@ -43,6 +45,8 @@ public class LoginServlet extends HttpServlet {
             // Сохранение имени и фамилии пользователя в атрибуты сессии
             session.setAttribute("loggedInUser", name);
             session.setAttribute("entity", entity);
+            session.setAttribute("rasp1", rasp);
+            session.setAttribute("jorney1", jorney);
             // Здесь вы можете использовать вашу логику для получения фамилии
             // Перенаправление на следующую страницу
             response.sendRedirect("Page1.jsp");
@@ -63,11 +67,15 @@ public class LoginServlet extends HttpServlet {
                     pstudent stud = pStudentDAO.findEntityById(tryPuser.getStudent_id());
                     name = stud.getSurname() + stud.getName() + stud.getPatronymic();
                     entity = "Студент:";
+                    rasp = "raspisanie.jsp";
+                    jorney = "zhurnal.jsp";
                 } else {
                     PTeacherDAO pTeacherDAO = new PTeacherDAO();
                     pteacher teach = pTeacherDAO.findEntityById(tryPuser.getTeacher_id());
                     name = teach.getSurname() + teach.getName() + teach.getPatronymic();
                     entity = "Учитель:";
+                    rasp = "teacher_raspisanie.jsp";
+                    jorney = "teacher-zhurnal.jsp";
                 }
                 return true;
             }
