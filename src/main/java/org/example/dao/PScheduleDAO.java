@@ -35,7 +35,7 @@ public class PScheduleDAO implements ScheduleDAO{
 
     public List findTimeTableForUser(String login) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<TimeTable> schedules = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(Select_Schedule_for_User);
         statement.setString(1,login);
         ResultSet resultSet = statement.executeQuery();
@@ -55,7 +55,7 @@ public class PScheduleDAO implements ScheduleDAO{
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pschedule> schedules = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
@@ -74,7 +74,7 @@ public class PScheduleDAO implements ScheduleDAO{
 
     @Override
     public pschedule findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,id);
         ResultSet resultSet = statement.executeQuery();
@@ -93,7 +93,7 @@ public class PScheduleDAO implements ScheduleDAO{
     @Override
     public boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
             statement.setInt(1, id);
             statement.executeQuery();
@@ -108,7 +108,7 @@ public class PScheduleDAO implements ScheduleDAO{
     @Override
     public boolean create(pschedule o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
             statement.setInt(1, o.getGroup_id());
             statement.setInt(2, o.getSubject_id());
@@ -127,7 +127,7 @@ public class PScheduleDAO implements ScheduleDAO{
     @Override
     public boolean update(int id,pschedule o) throws DaoException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);
             statement.setInt(5, id);
             statement.setInt(1, o.getGroup_id());

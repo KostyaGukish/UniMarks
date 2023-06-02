@@ -30,7 +30,7 @@ public class pevaluationDAO implements DAOBase{
 
     public List SelectAllUserMarks(String login) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<SelectedMarks> selectedMarks = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(SelectMarks);
         statement.setString(1, login);
         ResultSet resultSet = statement.executeQuery();
@@ -50,7 +50,7 @@ public class pevaluationDAO implements DAOBase{
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pevaluation> pevaluations = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
@@ -70,7 +70,7 @@ public class pevaluationDAO implements DAOBase{
 
     @Override
     public Object findEntityById(Object id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,(Integer) id);
         ResultSet resultSet = statement.executeQuery();
@@ -90,7 +90,7 @@ public class pevaluationDAO implements DAOBase{
     @Override
     public boolean delete(Object id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
             statement.setInt(1,(Integer) id);
             statement.executeQuery();
@@ -105,7 +105,7 @@ public class pevaluationDAO implements DAOBase{
     @Override
     public boolean create(Object o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
             statement.setInt(1, ((pevaluation) o).getSubject_id());
             statement.setInt(2, ((pevaluation) o).getMark());
@@ -125,7 +125,7 @@ public class pevaluationDAO implements DAOBase{
     @Override
     public boolean update(Object id,Object o) throws DaoException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);
             statement.setInt(1, ((pevaluation) o).getSubject_id());
             statement.setInt(2, ((pevaluation) o).getMark());

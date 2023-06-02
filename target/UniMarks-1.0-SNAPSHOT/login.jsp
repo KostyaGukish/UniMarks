@@ -26,9 +26,9 @@
 
 <script>
     // Отключение кнопок навигации
-    history.pushState(null, null, location.href);
+    history.pushState(null, null, 'login.jsp');
     window.addEventListener('popstate', function (event) {
-        history.pushState(null, null, location.href);
+        history.pushState(null, null, 'login.jsp');
     });
 </script>
 

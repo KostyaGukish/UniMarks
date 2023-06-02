@@ -1,7 +1,6 @@
 package org.example.dao;
 
 
-import org.example.entity.TimeTable;
 import org.example.entity.pstudent;
 
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +25,7 @@ public class PStudentDAO implements StudentDAO{
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pstudent> pteachers = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
@@ -44,7 +43,7 @@ public class PStudentDAO implements StudentDAO{
     }
 
     public List getByGroup(int group) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         List<pstudent> students = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_GROUP);
         statement.setInt(1,group);
@@ -65,7 +64,7 @@ public class PStudentDAO implements StudentDAO{
 
     @Override
     public pstudent findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,id);
         ResultSet resultSet = statement.executeQuery();
@@ -84,7 +83,7 @@ public class PStudentDAO implements StudentDAO{
     @Override
     public boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
             statement.setInt(1, id);
             statement.executeQuery();
@@ -99,7 +98,7 @@ public class PStudentDAO implements StudentDAO{
     @Override
     public boolean create(pstudent o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
             statement.setString(1, o.getName());
             statement.setString(2, o.getSurname());
@@ -118,7 +117,7 @@ public class PStudentDAO implements StudentDAO{
     @Override
     public boolean update(int id,pstudent o) throws DaoException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);
             statement.setInt(5, id);
             statement.setString(1, o.getName());

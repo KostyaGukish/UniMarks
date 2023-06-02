@@ -22,7 +22,7 @@ public class PUserDao implements UserDAO{
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<puser> pusers = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
@@ -40,7 +40,7 @@ public class PUserDao implements UserDAO{
 
     @Override
     public puser findEntityById(String id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setString(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -58,7 +58,7 @@ public class PUserDao implements UserDAO{
     @Override
     public boolean delete(String id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
             statement.setString(1, id);
             statement.executeQuery();
@@ -73,7 +73,7 @@ public class PUserDao implements UserDAO{
     @Override
     public boolean create(puser o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
             statement.setString(1, o.getLogin());
             statement.setString(2, o.getPassword());
@@ -92,7 +92,7 @@ public class PUserDao implements UserDAO{
     @Override
     public boolean update(String id,puser o) throws DaoException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);
             statement.setString(4, o.getLogin());
             statement.setString(1, o.getPassword());

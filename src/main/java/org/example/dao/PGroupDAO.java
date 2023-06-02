@@ -22,7 +22,7 @@ public class PGroupDAO implements GroupDAO{
     @Override
     public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pgroup> pgroups = new ArrayList<>();
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(FIND_ALL);
         while (resultSet.next()){
@@ -38,7 +38,7 @@ public class PGroupDAO implements GroupDAO{
 
     @Override
     public pgroup findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = Constants.connect();
+        Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,id);
         ResultSet resultSet = statement.executeQuery();
@@ -54,7 +54,7 @@ public class PGroupDAO implements GroupDAO{
     @Override
     public boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
             statement.setInt(1, id);
             statement.executeQuery();
@@ -69,7 +69,7 @@ public class PGroupDAO implements GroupDAO{
     @Override
     public boolean create(pgroup o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
             statement.setString(1, o.getGroupDescription());
             statement.executeQuery();
@@ -85,7 +85,7 @@ public class PGroupDAO implements GroupDAO{
     @Override
     public boolean update(int id,pgroup o) throws DaoException {
         try {
-            Connection connection = Constants.connect();
+            Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);
             statement.setInt(2, id);
             statement.setString(1, o.getGroupDescription());
