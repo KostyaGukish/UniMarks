@@ -32,8 +32,6 @@
     });
 </script>
 
-
-
 <%-- Проверка наличия ошибки и отображение сообщения об ошибке --%>
 <% if (request.getAttribute("javax.servlet.error.message") != null) { %>
 <script>
