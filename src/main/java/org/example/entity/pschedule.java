@@ -1,6 +1,6 @@
 package org.example.entity;
 
-public class pschedule {
+public class pschedule extends pteacher {
     int id;
     int group_id;
     int subject_id;

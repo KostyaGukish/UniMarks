@@ -1,6 +1,6 @@
 package org.example.entity;
 
-public class pteacher {
+public class pteacher extends pgroup {
     public pteacher(){
     }
     int id;

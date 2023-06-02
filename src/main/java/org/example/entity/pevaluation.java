@@ -2,7 +2,7 @@ package org.example.entity;
 
 import java.sql.Date;
 
-public class pevaluation {
+public class pevaluation extends pschedule {
     int id;
     int subject_id;
     int mark;
