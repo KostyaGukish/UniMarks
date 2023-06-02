@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Context>
+    <Resource     name="jdbc/testpool"
+                  type="javax.sql.DataSource"
+                  auth="Container"
+                  username="root"
+                  password="Bookcase123"
+                  driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                  url="jdbc:sqlserver://localhost:1433;databaseName=UniMarks;encrypt=false;"
+                  maxTotal = "10"
+                  maxIdle = "4"
+                  maxWaitMillis = "100000"
+    />
+</Context>
