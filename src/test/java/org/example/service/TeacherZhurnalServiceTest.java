@@ -19,7 +19,7 @@ class TeacherZhurnalServiceTest {
 
     TeacherZhurnalService service = new TeacherZhurnalService();
     @Test
-    void getStudents() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getStudents() throws Exception {
         String login = new String("t15");
         PTeacherDAO pTeacherDAO = new PTeacherDAO();
         pteacher teacher = pTeacherDAO.findEntityByLogin(login);
@@ -37,7 +37,7 @@ class TeacherZhurnalServiceTest {
     }
 
     @Test
-    void getGroup() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getGroup() throws Exception {
         for (int i = 1; i <= 50; i++) {
             StringBuilder login = new StringBuilder("t");
             login.append(i);

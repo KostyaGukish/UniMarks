@@ -16,7 +16,7 @@ public class ZhurnalService {
         pevaluationDAO = new pevaluationDAO();
     }
 
-    public ArrayList<SelectedMarks> getTimeTables(String login) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public ArrayList<SelectedMarks> getTimeTables(String login) throws Exception {
         return (ArrayList<SelectedMarks>) pevaluationDAO.SelectAllUserMarks(login);
     }
 }

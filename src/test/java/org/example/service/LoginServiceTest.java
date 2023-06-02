@@ -13,7 +13,7 @@ class LoginServiceTest {
 
     LoginService service = new LoginService();
     @Test
-    void getPassword() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getPassword() throws Exception {
         String slogin = "s45";
         String tlogin = "t15";
         String spassword = "0000";
@@ -23,7 +23,7 @@ class LoginServiceTest {
     }
 
     @Test
-    void isStudent() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void isStudent() throws Exception {
         for (int i = 1; i <= 50; i++) {
             StringBuilder slogin = new StringBuilder("s");
             slogin.append(i);
@@ -35,7 +35,7 @@ class LoginServiceTest {
     }
 
     @Test
-    void getStudentId() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getStudentId() throws Exception {
         for (int i = 1; i <= 50; i++) {
             StringBuilder slogin = new StringBuilder("s");
             slogin.append(i);
@@ -47,7 +47,7 @@ class LoginServiceTest {
     }
 
     @Test
-    void getTeacherId() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getTeacherId() throws Exception {
         for (int i = 1; i <= 50; i++) {
             StringBuilder slogin = new StringBuilder("s");
             slogin.append(i);

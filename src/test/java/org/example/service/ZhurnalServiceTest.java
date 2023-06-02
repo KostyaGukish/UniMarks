@@ -18,7 +18,7 @@ class ZhurnalServiceTest {
 
     ZhurnalService service = new ZhurnalService();
     @Test
-    void getTimeTables() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getTimeTables() throws Exception {
         String login = new String("s15");
         pevaluationDAO pevaluationDAO = new pevaluationDAO();
         ArrayList<SelectedMarks> SelectedMarks1 = (ArrayList<SelectedMarks>) pevaluationDAO.SelectAllUserMarks(login);

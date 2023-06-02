@@ -31,6 +31,10 @@ public class LoginAction extends HttpServlet {
         boolean userExists = false;
         try {
             LoginService service = new LoginService();
+            if(service.getLogin(username)== null){
+                request.setAttribute("javax.servlet.error.message", "Неверный логин или пароль");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
             if (service.getPassword(username).equals(password)) {
                 HttpSession session = request.getSession();
                 if (service.isStudent(username)) {

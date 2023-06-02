@@ -21,7 +21,7 @@ public class TeacherZhurnalService {
         pStudentDAO = new PStudentDAO();
     }
 
-    public ArrayList<String> getStudents(String login) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public ArrayList<String> getStudents(String login) throws Exception {
         pteacher teacher = pTeacherDAO.findEntityByLogin(login);
         ArrayList<pstudent> students = (ArrayList<pstudent>) pStudentDAO.getByGroup(teacher.getGroup_id());
         ArrayList<String> strings = new ArrayList<>();
@@ -31,7 +31,7 @@ public class TeacherZhurnalService {
         return strings;
     }
 
-    public int getGroup(String login) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public int getGroup(String login) throws Exception {
         pteacher teacher = pTeacherDAO.findEntityByLogin(login);
         return teacher.getGroup_id();
     }

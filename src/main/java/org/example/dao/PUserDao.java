@@ -20,7 +20,7 @@ public class PUserDao implements UserDAO{
             "update puser set password=?,teacher_id=?,student_id=? where login = ?";
 
     @Override
-    public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public List findAll() throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<puser> pusers = new ArrayList<>();
         Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
@@ -39,24 +39,29 @@ public class PUserDao implements UserDAO{
     }
 
     @Override
-    public puser findEntityById(String id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Connection connection = ConnectionPool.getConnection();
-        PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
-        statement.setString(1, id);
-        ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
+    public puser findEntityById(String id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        try {
+            Connection connection = ConnectionPool.getConnection();
+            PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
             puser temp = new puser();
             temp.setLogin(resultSet.getString(1).replace(" ", ""));
             temp.setPassword(resultSet.getString(2).replace(" ", ""));
             temp.setTeacher_id(resultSet.getInt(3));
             temp.setStudent_id(resultSet.getInt(4));
-        close(statement);
-        close(connection);
-        return temp;
+            close(statement);
+            close(connection);
+            return temp;
+        }
+        catch (Exception e){
+            return null;
+        }
     }
 
     @Override
-    public boolean delete(String id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean delete(String id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
@@ -71,7 +76,7 @@ public class PUserDao implements UserDAO{
     }
 
     @Override
-    public boolean create(puser o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean create(puser o) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
@@ -90,7 +95,7 @@ public class PUserDao implements UserDAO{
     }
 
     @Override
-    public boolean update(String id,puser o) throws DaoException {
+    public boolean update(String id,puser o) throws Exception {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);

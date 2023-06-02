@@ -20,27 +20,34 @@ public class LoginService {
         this.pStudentDAO = new PStudentDAO();
     }
 
-    public String getPassword(String username) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public String getPassword(String username) throws Exception {
         puser tryPuser = pUserDao.findEntityById(username);
         return tryPuser.getPassword();
     }
+    public String getLogin(String username) throws Exception {
+        puser tryPuser = pUserDao.findEntityById(username);
+        if(tryPuser == null){
+            return null;
+        }
+        return tryPuser.getLogin();
+    }
 
-    public boolean isStudent(String username) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean isStudent(String username) throws Exception {
         puser tryPuser = pUserDao.findEntityById(username);
         return tryPuser.getStudent_id() != 0;
     }
 
-    public int getStudentId(String username) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public int getStudentId(String username) throws Exception {
         puser tryPuser = pUserDao.findEntityById(username);
         return tryPuser.getStudent_id();
     }
 
-    public int getTeacherId(String username) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public int getTeacherId(String username) throws Exception {
         puser tryPuser = pUserDao.findEntityById(username);
         return tryPuser.getTeacher_id();
     }
 
-    public String getName(String username) throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public String getName(String username) throws Exception {
         puser tryPuser = pUserDao.findEntityById(username);
         if (this.isStudent(username)) {
             PStudentDAO pStudentDAO = new PStudentDAO();

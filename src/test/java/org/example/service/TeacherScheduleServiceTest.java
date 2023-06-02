@@ -16,7 +16,7 @@ class TeacherScheduleServiceTest {
 
     TeacherScheduleService service = new TeacherScheduleService();
     @Test
-    void getSchedule() throws SQLException, DaoException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    void getSchedule() throws Exception {
         String login = "t15";
         PScheduleDAO pScheduleDAO = new PScheduleDAO();
         ArrayList<TimeTable> timeTable = (ArrayList<TimeTable>) pScheduleDAO.findTimeTableForUser(login);;

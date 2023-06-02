@@ -48,6 +48,8 @@ public class TeacherScheduleAction extends HttpServlet {
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

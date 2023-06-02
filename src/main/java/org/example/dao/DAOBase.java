@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import javax.naming.NamingException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,11 +8,11 @@ import java.sql.Statement;
 import java.util.List;
 
 public interface DAOBase < K,T > {
-    List<T> findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    T findEntityById(K id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean delete(K id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean create(T t) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean update(K id,T O) throws DaoException;
+    List<T> findAll() throws Exception, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NamingException;
+    T findEntityById(K id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
+    boolean delete(K id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
+    boolean create(T t) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
+    boolean update(K id,T O) throws Exception;
     default void close(Statement statement) {
         try {
             if (statement != null) {

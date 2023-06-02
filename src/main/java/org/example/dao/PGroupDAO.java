@@ -2,6 +2,7 @@ package org.example.dao;
 
 import org.example.entity.pgroup;
 
+import javax.naming.NamingException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class PGroupDAO implements GroupDAO{
             "update schedule set GroupDescription=? where id = ?";
 
     @Override
-    public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public List findAll() throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NamingException {
         List<pgroup> pgroups = new ArrayList<>();
         Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
@@ -37,7 +38,7 @@ public class PGroupDAO implements GroupDAO{
     }
 
     @Override
-    public pgroup findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public pgroup findEntityById(int id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NamingException {
         Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,id);
@@ -52,7 +53,7 @@ public class PGroupDAO implements GroupDAO{
     }
 
     @Override
-    public boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean delete(int id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
@@ -67,7 +68,7 @@ public class PGroupDAO implements GroupDAO{
     }
 
     @Override
-    public boolean create(pgroup o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean create(pgroup o) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
@@ -83,7 +84,7 @@ public class PGroupDAO implements GroupDAO{
     }
 
     @Override
-    public boolean update(int id,pgroup o) throws DaoException {
+    public boolean update(int id,pgroup o) throws Exception {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);

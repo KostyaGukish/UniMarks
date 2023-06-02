@@ -23,7 +23,7 @@ public class PTeacherDAO implements TeacherDAO{
             "(select puser.teacher_id from puser where login = ?)";
 
     @Override
-    public List findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public List findAll() throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         List<pteacher> pteachers = new ArrayList<>();
         Connection connection = ConnectionPool.getConnection();
         Statement statement = connection.createStatement();
@@ -45,7 +45,7 @@ public class PTeacherDAO implements TeacherDAO{
     }
 
     @Override
-    public pteacher findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public pteacher findEntityById(int id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
         statement.setInt(1,id);
@@ -62,7 +62,7 @@ public class PTeacherDAO implements TeacherDAO{
         close(connection);
         return temp;
     }
-    public pteacher findEntityByLogin(String login) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public pteacher findEntityByLogin(String login) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Connection connection = ConnectionPool.getConnection();
         PreparedStatement statement = connection.prepareStatement(FIND_BY_LOGIN);
         statement.setString(1, login);
@@ -81,7 +81,7 @@ public class PTeacherDAO implements TeacherDAO{
     }
 
     @Override
-    public boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean delete(int id) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try{
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Delete);
@@ -96,7 +96,7 @@ public class PTeacherDAO implements TeacherDAO{
     }
 
     @Override
-    public boolean create(pteacher o) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean create(pteacher o) throws Exception, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Create);
@@ -116,7 +116,7 @@ public class PTeacherDAO implements TeacherDAO{
     }
 
     @Override
-    public boolean update(int id,pteacher o) throws DaoException {
+    public boolean update(int id,pteacher o) throws Exception {
         try {
             Connection connection = ConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement(Update);

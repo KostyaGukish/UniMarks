@@ -9,11 +9,11 @@ import java.sql.Statement;
 import java.util.List;
 
 public interface ScheduleDAO {
-    List<pschedule> findAll() throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    pschedule findEntityById(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean delete(int id) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean create(pschedule t) throws DaoException, SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
-    boolean update(int id,pschedule O) throws DaoException;
+    List<pschedule> findAll() throws Exception ;
+    pschedule findEntityById(int id) throws Exception ;
+    boolean delete(int id) throws Exception;
+    boolean create(pschedule t) throws Exception;
+    boolean update(int id,pschedule O) throws Exception;
     default void close(Statement statement) {
         try {
             if (statement != null) {
