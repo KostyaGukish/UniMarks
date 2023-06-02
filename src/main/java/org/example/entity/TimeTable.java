@@ -4,6 +4,7 @@ public class TimeTable {
     String subject_name;
     int subject_number;
     int day_of_week;
+    String pteacher_surname;
 
     public String getSubject_name() {
         return subject_name;
@@ -36,6 +37,4 @@ public class TimeTable {
     public void setPteacher_surname(String pteacher_surname) {
         this.pteacher_surname = pteacher_surname;
     }
-
-    String pteacher_surname;
 }
