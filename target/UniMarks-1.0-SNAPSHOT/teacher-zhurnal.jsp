@@ -12,6 +12,7 @@
             background-size: cover;
             background-position: center;
             min-height: 100%;
+            overflow: hidden;
         }
 
         /* Стили для таблицы */
@@ -126,6 +127,23 @@
         .group-heading {
             font-size: 26px;
         }
+
+        .clear-button {
+            margin-top: -300px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #17287d;
+            color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+        .clear-button:hover {
+            background-color: #68d315;
+        }
     </style>
 </head>
 <body>
@@ -210,6 +228,9 @@
     </table>
 </div>
 
+<div class="container">
+    <button class="clear-button">Выставить отметки</button>
+</div>
 
 <script>
     // Получение значения "loggedInUser" из локального хранилища
@@ -219,6 +240,16 @@
     var usernameElement = document.querySelector('.username');
     if (loggedInUser && usernameElement) {
         usernameElement.textContent = loggedInUser;
+    }
+    var clearButton = document.querySelector('.clear-button');
+    if (clearButton) {
+        clearButton.addEventListener('click', function () {
+            var gradeCells = document.querySelectorAll('.journal-table td.grade-column');
+            gradeCells.forEach(function (cell) {
+                cell.textContent = '';
+            });
+            location.reload();
+        });
     }
 </script>
 </body>

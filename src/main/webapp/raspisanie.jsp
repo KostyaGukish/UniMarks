@@ -86,7 +86,7 @@
             font-family: Arial, sans-serif;
         }
         .entity {
-            margin-left:550px; /* Уменьшите значение здесь */
+            margin-left:500px; /* Уменьшите значение здесь */
             font-size: 18px;
             color: #ffffff;
             font-family: Arial, sans-serif;
